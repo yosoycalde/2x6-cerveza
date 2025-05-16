@@ -1,1 +1,124 @@
-hyvgtrfvftrhyb
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Mundo de la Cerveza</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>CervezApp</h1>
+            </div>
+            <ul class="menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#tipos">Tipos de Cerveza</a></li>
+                <li><a href="#proceso">Proceso</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1 class="animate-title">El Arte de la Cerveza</h1>
+            <p>Descubre el fascinante mundo de sabores y tradiciones</p>
+            <button class="cta-button">Explorar</button>
+        </div>
+        <div class="beer-bubbles" id="beer-animation"></div>
+    </section>
+
+    <section id="tipos" class="tipos-section">
+        <h2>Tipos de Cerveza</h2>
+        <div class="beer-cards">
+            <div class="beer-card" id="lager">
+                <div class="beer-img"></div>
+                <h3>Lager</h3>
+                <p>Cerveza de fermentación baja, con sabor ligero y refrescante</p>
+            </div>
+            <div class="beer-card" id="ale">
+                <div class="beer-img"></div>
+                <h3>Ale</h3>
+                <p>Cerveza de fermentación alta, con sabores más complejos y frutales</p>
+            </div>
+            <div class="beer-card" id="stout">
+                <div class="beer-img"></div>
+                <h3>Stout</h3>
+                <p>Cerveza oscura con sabores intensos a café y chocolate</p>
+            </div>
+            <div class="beer-card" id="ipa">
+                <div class="beer-img"></div>
+                <h3>IPA</h3>
+                <p>Conocida por su amargor y aroma intenso a lúpulo</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="proceso" class="proceso-section">
+        <h2>Proceso de Elaboración</h2>
+        <div class="proceso-timeline">
+            <div class="proceso-step" data-step="1">
+                <div class="step-content">
+                    <h3>Malteado</h3>
+                    <p>Germinación controlada de los granos de cebada</p>
+                </div>
+            </div>
+            <div class="proceso-step" data-step="2">
+                <div class="step-content">
+                    <h3>Maceración</h3>
+                    <p>Conversión del almidón en azúcares fermentables</p>
+                </div>
+            </div>
+            <div class="proceso-step" data-step="3">
+                <div class="step-content">
+                    <h3>Cocción</h3>
+                    <p>Adición de lúpulo y hervido del mosto</p>
+                </div>
+            </div>
+            <div class="proceso-step" data-step="4">
+                <div class="step-content">
+                    <h3>Fermentación</h3>
+                    <p>Transformación de azúcares en alcohol y CO2</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contacto-section">
+        <h2>Contáctanos</h2>
+        <form class="contact-form">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-button">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>CervezApp</h2>
+                <p>© 2025 - Todos los derechos reservados</p>
+            </div>
+            <div class="social-media">
+                <a href="#" class="social-icon">FB</a>
+                <a href="#" class="social-icon">IG</a>
+                <a href="#" class="social-icon">TW</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
