@@ -188,19 +188,19 @@ nav {
 }
 
 #lager .beer-img {
-    background-color: var(--color-gold);
-}
-
-#ale .beer-img {
-    background-color: var(--color-amber);
-}
-
-#stout .beer-img {
     background-color: var(--color-dark);
 }
 
-#ipa .beer-img {
+#ale .beer-img {
     background-color: var(--color-caramel);
+}
+
+#stout .beer-img {
+    background-color: var(--color-amber);
+}
+
+#ipa .beer-img {
+    background-color: var(--color-wheat);
 }
 
 .beer-card h3 {
