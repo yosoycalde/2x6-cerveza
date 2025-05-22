@@ -434,6 +434,7 @@ document.addEventListener("DOMContentLoaded", function () {
   setupActiveSection();
 });
 
+
 // Función principal para configurar la navegación suave
 function setupSmoothNavigation() {
   // Seleccionar todos los enlaces del menú de navegación
@@ -510,15 +511,7 @@ function setupNavigationEffects() {
         overflow: hidden;
       }
       
-      .menu a::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-      
-        transition: left 0.6s ease;
+
       }
       
       .menu a:hover::before {
@@ -539,7 +532,7 @@ function setupNavigationEffects() {
       
       .menu a:hover::after,
       .menu a.active::after {
-        width: 100%;
+        width: 100%;s
       }
       
       .menu a:hover {
