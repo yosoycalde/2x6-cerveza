@@ -118,9 +118,127 @@
             <button type="submit" class="submit-button">Enviar</button>
         </form>
     </section>
-    <div id="img1">
-        <img src="recursos/istockphoto-498866230-612x612.jpg">
+
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Servicios</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    #servicios {
+      padding: 40px;
+      background-color: #f8f8f8;
+    }
+    .servicio {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 250px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+      text-align: center;
+    }
+    .servicio:hover {
+      transform: scale(1.05);
+    }
+    .servicio img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .servicio h3 {
+      margin: 15px 0 10px;
+      font-size: 18px;
+    }
+    .detalles {
+      display: none;
+      margin-top: 10px;
+      color: #555;
+      font-size: 14px;
+    }
+    .contenedor {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<section id="servicios">
+  <h2 style="text-align: center;">Nuestros Servicios</h2>
+  <div class="contenedor">
+
+    <div class="servicio">
+      <img src="recursos/cebada.png" alt="Degustaciones">
+      <h3>Degustaciones</h3>
+      <div class="detalles">Catas guiadas con estilos, aromas y maridajes únicos.</div>
     </div>
+
+    <div class="servicio">
+      <img src="recursos/cerveza vaso.png" alt="Tour Cervecero">
+      <h3>Tours Cerveceros</h3>
+      <div class="detalles">Recorrido por la cervecería y degustación al final.</div>
+    </div>
+
+    <div class="servicio">
+      <img src="recursos/istockphoto-498866230-612x612.jpg" alt="Cursos de Cerveza">
+      <h3>Cursos y Talleres</h3>
+      <div class="detalles">Aprendé a hacer cerveza y conocé sus estilos.</div>
+    </div>
+
+    <div class="servicio">
+      <img src="imagenes/barriles.jpg" alt="Alquiler de Barriles">
+      <h3>Alquiler de Barriles</h3>
+      <div class="detalles">Servicio completo para tus eventos.</div>
+    </div>
+
+    <div class="servicio">
+      <img src="imagenes/club.jpg" alt="Club de Cerveza">
+      <h3>Club de Cerveza</h3>
+      <div class="detalles">Suscripción mensual con cervezas exclusivas.</div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const servicios = document.querySelectorAll('.servicio');
+
+  servicios.forEach(servicio => {
+    servicio.addEventListener('click', () => {
+      const detalles = servicio.querySelector('.detalles');
+      const estaVisible = detalles.style.display === 'block';
+      detalles.style.display = estaVisible ? 'none' : 'block';
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
+
+    <script>
+      const servicios = document.querySelectorAll('.servicio');
+    
+      servicios.forEach(servicio => {
+        servicio.addEventListener('click', () => {
+          const detalles = servicio.querySelector('.detalles');
+          const estaVisible = detalles.style.display === 'block';
+          detalles.style.display = estaVisible ? 'none' : 'block';
+        });
+      });
+    </script>
+    
 
     <head>
       <meta charset="UTF-8">
@@ -215,18 +333,8 @@
 
     </section>
     
-    <script>
-      const servicios = document.querySelectorAll('.servicio');
-    
-      servicios.forEach(servicio => {
-        servicio.addEventListener('click', () => {
-          const detalles = servicio.querySelector('.detalles');
-          const estaVisible = detalles.style.display === 'block';
-          detalles.style.display = estaVisible ? 'none' : 'block';
-        });
-      });
-    </script>
-    
+
+
     </body>
     </html>
 
