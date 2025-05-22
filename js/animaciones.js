@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Efecto para la línea de tiempo del proceso
   animateProcessTimeline();
 
+  // Funcionalidad para mostrar/ocultar detalles de servicios
+  setupServicesToggle();
+
   // Animación para el botón CTA
   const ctaButton = document.querySelector(".cta-button");
   if (ctaButton) {
@@ -157,13 +160,17 @@ function animateBeerCards() {
     // Añadir animación al color de la tarjeta cuando se hace hover
     card.addEventListener("mouseenter", function () {
       const beerImg = this.querySelector(".beer-img");
-      beerImg.style.transition = "transform 0.5s ease";
-      beerImg.style.transform = "scale(1.1)";
+      if (beerImg) {
+        beerImg.style.transition = "transform 0.5s ease";
+        beerImg.style.transform = "scale(1.1)";
+      }
     });
 
     card.addEventListener("mouseleave", function () {
       const beerImg = this.querySelector(".beer-img");
-      beerImg.style.transform = "scale(1)";
+      if (beerImg) {
+        beerImg.style.transform = "scale(1)";
+      }
     });
   });
 
@@ -211,6 +218,92 @@ function animateProcessTimeline() {
   if (procesoSection) {
     observer.observe(procesoSection);
   }
+}
+
+// Función para configurar la funcionalidad de toggle de servicios
+function setupServicesToggle() {
+  const servicios = document.querySelectorAll(".servicio");
+
+  // Agregar estilos CSS para los detalles
+  if (!document.querySelector("#serviciosStyles")) {
+    const style = document.createElement("style");
+    style.id = "serviciosStyles";
+    style.textContent = `
+      .detalles {
+        display: none;
+        margin-top: 10px;
+        padding: 15px;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        border-left: 4px solid #d4af37;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        transition: all 0.3s ease;
+      }
+      
+      .detalles.visible {
+        display: block;
+        animation: slideDown 0.3s ease;
+      }
+      
+      .servicio {
+        cursor: pointer;
+        transition: transform 0.2s ease;
+      }
+      
+      .servicio:hover {
+        transform: translateY(-2px);
+      }
+      
+      .servicio.active {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+      
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          max-height: 0;
+        }
+        to {
+          opacity: 1;
+          max-height: 200px;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // Agregar event listener a cada servicio
+  servicios.forEach((servicio) => {
+    servicio.addEventListener("click", function(e) {
+      // Prevenir que el click se propague si hay enlaces dentro
+      if (e.target.tagName === 'A') return;
+      
+      const detalles = this.querySelector(".detalles");
+      
+      if (detalles) {
+        const estaVisible = detalles.classList.contains("visible");
+        
+        // Cerrar todos los otros detalles primero
+        servicios.forEach((otroServicio) => {
+          const otrosDetalles = otroServicio.querySelector(".detalles");
+          if (otrosDetalles && otroServicio !== this) {
+            otrosDetalles.classList.remove("visible");
+            otroServicio.classList.remove("active");
+          }
+        });
+        
+        // Toggle del servicio clickeado
+        if (estaVisible) {
+          detalles.classList.remove("visible");
+          this.classList.remove("active");
+        } else {
+          detalles.classList.add("visible");
+          this.classList.add("active");
+        }
+      }
+    });
+  });
 }
 
 // Validación del formulario de contacto
@@ -303,7 +396,9 @@ function setupFormValidation() {
 
       // Eliminar mensaje después de 5 segundos
       setTimeout(() => {
-        form.removeChild(successMessage);
+        if (form.contains(successMessage)) {
+          form.removeChild(successMessage);
+        }
       }, 5000);
     }
   });
@@ -325,24 +420,3 @@ function setupFormValidation() {
     });
   });
 }
-var servicios;
-
-const servicios = document.querySelectorAll(".servicio");
-
-servicios.forEach((servicio) => {
-  servicio.addEventListener("click", () => {
-    const detalles = servicio.querySelector(".detalles");
-    const estaVisible = detalles.style.display === "block";
-    detalles.style.display = estaVisible ? "none" : "block";
-  });
-});
-
-const servicios = document.querySelectorAll(".servicio");
-
-servicios.forEach((servicio) => {
-  servicio.addEventListener("click", () => {
-    const detalles = servicio.querySelector(".detalles");
-    const estaVisible = detalles.style.display === "block";
-    detalles.style.display = estaVisible ? "none" : "block";
-  });
-});
