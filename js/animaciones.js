@@ -325,6 +325,7 @@ function setupFormValidation() {
     });
   });
 }
+var servicios;
 
 const servicios = document.querySelectorAll(".servicio");
 
