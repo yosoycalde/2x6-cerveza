@@ -97,10 +97,7 @@
                 </div>
             </div>
         </div>
-        <div id="img1">
-            <img src="recursos/istockphoto-498866230-612x612.jpg">
-        </div>
-
+       
     </section>
 
     <section id="contacto" class="contacto-section">
@@ -121,7 +118,119 @@
             <button type="submit" class="submit-button">Enviar</button>
         </form>
     </section>
+    <div id="img1">
+        <img src="recursos/istockphoto-498866230-612x612.jpg">
+    </div>
 
+    <head>
+      <meta charset="UTF-8">
+      <title>Servicios</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+        }
+        #servicios {
+          padding: 40px;
+          background-color: #f8f8f8;
+        }
+        .servicio {
+          background: white;
+          padding: 20px;
+          border-radius: 10px;
+          width: 300px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+          cursor: pointer;
+          transition: transform 0.3s;
+        }
+        .servicio:hover {
+          transform: scale(1.05);
+        }
+        .detalles {
+          display: none;
+          margin-top: 10px;
+          color: #555;
+        }
+        .contenedor {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 20px;
+          margin-top: 30px;
+        }
+      </style>
+    </head>
+    <body>
+    
+    <section id="servicios">
+      <h2 style="text-align: center;">Conoce Nuestros Servicios</h2>
+      <div class="contenedor">
+        
+        <div class="servicio">
+          <h3>Precio al por mayor</h3>
+          <p>Impulsamos tu bar para que alcance la visibilidad que necesita y se destaque en el mercado.
+          </p>
+          <div class="detalles">¿Querés saber más? Contactanos y te contamos todo sobre nuestros servicios.</div>
+        </div>
+    
+        <div class="servicio">
+          <h3>Curso para aprender a hacer cerveza en 2X6</h3>
+          <p>Introducción al proceso cervecero / Ingredientes: malta, lúpulo, levadura y agua / Etapas: macerado, hervido, fermentación y embotellado / Elaboración de cerveza casera paso a paso</p>
+          <div class="detalles"><b>Producción de cerveza:</b> Ingredientes y proceso básico.
+
+          <b>Ciencia cervecera:</b> Fermentación, microbiología y control de calidad. <br>
+            
+            <b>Estilos de cerveza:</b> Características y degustación. <br>
+            
+           <b> Higiene:</b> Limpieza y prevención de contaminación. <br>
+            
+           <b> Embotellado y distribución:</b> Técnicas y presentación. <br>
+            
+            <b>Gestión:</b> Emprendimiento, marketing y legalidad. <br>
+            
+           <b> Maridaje y servicio:</b> Combinaciones y presentación profesional. <br>
+            
+            </div>
+        </div>
+
+        <div class="servicio">
+            <h3>Distribucion de nuestros productos y servicios</h3>
+            <p>Distribuimos nuestros productos y servicios a cualquier parte del mundo.</p>
+            <div class="detalles">Si solicitas nuestros servicios o productos nos encargaremos de que lleguen a tu negocio u hogar</div>
+          </div>
+    
+        <div class="servicio">
+          <h3>Politica de Devoluciòn y Reenbolso</h3>
+          <p>Si el producto o servicio que recibiste no cumple con tus expectativas, puedes solicitar un reembolso. </p>
+          <div class="detalles">Nos encargamos que el producto o servicio que llega a tus manos sea de la mas alta calidad</div>
+        </div>
+
+        <div class="servicio">
+            <h3>Degustaciones y Cartas</h3>
+            <p>Venta de cerveza artesanal propia, cervezas artesanales nacionales e importadas, Cerveza en botella, lata y barril, Cerveza a domicilio</p>
+            <div class="detalles">Vive una experiencia cervecera única. Prueba nuestros estilos artesanales y descubre sus sabores, aromas e historias.
+                ¡Reservá tu lugar y brindá con nosotros!</div>
+          </div>
+      </div>
+
+
+    </section>
+    
+    <script>
+      const servicios = document.querySelectorAll('.servicio');
+    
+      servicios.forEach(servicio => {
+        servicio.addEventListener('click', () => {
+          const detalles = servicio.querySelector('.detalles');
+          const estaVisible = detalles.style.display === 'block';
+          detalles.style.display = estaVisible ? 'none' : 'block';
+        });
+      });
+    </script>
+    
+    </body>
+    </html>
+
+    
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
