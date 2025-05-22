@@ -420,3 +420,301 @@ function setupFormValidation() {
     });
   });
 }
+
+
+// Navegación suave para los botones del menú
+document.addEventListener("DOMContentLoaded", function () {
+  // Configurar navegación suave
+  setupSmoothNavigation();
+  
+  // Configurar efectos visuales para los botones
+  setupNavigationEffects();
+  
+  // Configurar indicador de sección activa
+  setupActiveSection();
+});
+
+// Función principal para configurar la navegación suave
+function setupSmoothNavigation() {
+  // Seleccionar todos los enlaces del menú de navegación
+  const navLinks = document.querySelectorAll('.menu a[href^="#"]');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevenir comportamiento por defecto
+      
+      const targetId = this.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      
+      if (targetSection) {
+        // Configuración de scroll suave personalizada
+        const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+        const targetPosition = targetSection.offsetTop - headerHeight - 20;
+        
+        // Scroll suave personalizado con mejor control
+        smoothScrollTo(targetPosition, 1000); // 1000ms = 1 segundo
+        
+        // Actualizar URL sin hacer scroll brusco
+        history.pushState(null, null, targetId);
+        
+        // Agregar clase activa al enlace clickeado
+        updateActiveNavLink(this);
+      }
+    });
+  });
+}
+
+// Función de scroll suave personalizada con easing
+function smoothScrollTo(targetPosition, duration) {
+  const startPosition = window.pageYOffset;
+  const distance = targetPosition - startPosition;
+  let startTime = null;
+  
+  // Función de easing para una transición más natural
+  function easeInOutCubic(t) {
+    return t < 0.5 
+      ? 4 * t * t * t 
+      : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+  }
+  
+  function animation(currentTime) {
+    if (startTime === null) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const progress = Math.min(timeElapsed / duration, 1);
+    
+    const easedProgress = easeInOutCubic(progress);
+    const currentPosition = startPosition + (distance * easedProgress);
+    
+    window.scrollTo(0, currentPosition);
+    
+    if (progress < 1) {
+      requestAnimationFrame(animation);
+    }
+  }
+  
+  requestAnimationFrame(animation);
+}
+
+// Función para agregar efectos visuales a los botones de navegación
+function setupNavigationEffects() {
+  const navLinks = document.querySelectorAll('.menu a');
+  
+  // Agregar estilos CSS para los efectos
+  if (!document.querySelector('#navigationStyles')) {
+    const style = document.createElement('style');
+    style.id = 'navigationStyles';
+    style.textContent = `
+      .menu a {
+        position: relative;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+      }
+      
+      .menu a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+      
+        transition: left 0.6s ease;
+      }
+      
+      .menu a:hover::before {
+        left: 100%;
+      }
+      
+      .menu a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #d4af37, #f4d03f);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateX(-50%);
+      }
+      
+      .menu a:hover::after,
+      .menu a.active::after {
+        width: 100%;
+      }
+      
+      .menu a:hover {
+        transform: translateY(-2px);
+        text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      }
+      
+      .menu a:active {
+        transform: translateY(0) scale(0.98);
+        transition: transform 0.1s ease;
+      }
+      
+      .menu a.active {
+        color: #d4af37;
+        font-weight: bold;
+      }
+      
+      /* Efecto de ondas al hacer clic */
+      .menu a {
+        position: relative;
+      }
+      
+      .menu a .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(0);
+        animation: ripple-animation 0.6s ease-out;
+        pointer-events: none;
+      }
+      
+      @keyframes ripple-animation {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+      
+      /* Animación de pulso para el botón activo */
+      .menu a.active {
+        animation: pulse 2s infinite;
+      }
+      
+      @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+        70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+  
+  // Agregar efecto de ondas (ripple) al hacer clic
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      // Crear elemento de onda
+      const ripple = document.createElement('span');
+      ripple.classList.add('ripple');
+      
+      // Calcular posición y tamaño
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+      
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      
+      this.appendChild(ripple);
+      
+      // Remover el elemento después de la animación
+      setTimeout(() => {
+        if (this.contains(ripple)) {
+          this.removeChild(ripple);
+        }
+      }, 600);
+    });
+    
+    // Efectos adicionales en hover
+    link.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-2px) scale(1.05)';
+    });
+    
+    link.addEventListener('mouseleave', function() {
+      if (!this.classList.contains('active')) {
+        this.style.transform = 'translateY(0) scale(1)';
+      }
+    });
+  });
+}
+
+// Función para actualizar el enlace activo
+function updateActiveNavLink(activeLink) {
+  // Remover clase activa de todos los enlaces
+  document.querySelectorAll('.menu a').forEach(link => {
+    link.classList.remove('active');
+    link.style.transform = 'translateY(0) scale(1)';
+  });
+  
+  // Agregar clase activa al enlace actual
+  activeLink.classList.add('active');
+  activeLink.style.transform = 'translateY(-2px) scale(1.05)';
+}
+
+// Función para detectar la sección visible y actualizar el menú automáticamente
+function setupActiveSection() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.menu a[href^="#"]');
+  
+  // Configurar Intersection Observer
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -70% 0px', // Detectar cuando la sección está en el 20%-70% del viewport
+    threshold: 0.1
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const sectionId = '#' + entry.target.id;
+        const correspondingLink = document.querySelector(`.menu a[href="${sectionId}"]`);
+        
+        if (correspondingLink) {
+          updateActiveNavLink(correspondingLink);
+        }
+      }
+    });
+  }, observerOptions);
+  
+  // Observar todas las secciones
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+}
+
+// Función adicional para navegación con teclado (accesibilidad)
+document.addEventListener('keydown', function(e) {
+  // Navegación con teclas numéricas (1-4)
+  const keyMap = {
+    '1': '#inicio',
+    '2': '#tipos',
+    '3': '#proceso',
+    '4': '#contacto'
+  };
+  
+  if (e.altKey && keyMap[e.key]) {
+    e.preventDefault();
+    const targetSection = document.querySelector(keyMap[e.key]);
+    const correspondingLink = document.querySelector(`.menu a[href="${keyMap[e.key]}"]`);
+    
+    if (targetSection && correspondingLink) {
+      const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+      const targetPosition = targetSection.offsetTop - headerHeight - 20;
+      
+      smoothScrollTo(targetPosition, 800);
+      updateActiveNavLink(correspondingLink);
+      history.pushState(null, null, keyMap[e.key]);
+    }
+  }
+});
+
+// Función para manejar navegación hacia atrás/adelante del navegador
+window.addEventListener('popstate', function(e) {
+  const hash = window.location.hash;
+  if (hash) {
+    const targetSection = document.querySelector(hash);
+    const correspondingLink = document.querySelector(`.menu a[href="${hash}"]`);
+    
+    if (targetSection && correspondingLink) {
+      const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+      const targetPosition = targetSection.offsetTop - headerHeight - 20;
+      
+      smoothScrollTo(targetPosition, 800);
+      updateActiveNavLink(correspondingLink);
+    }
+  }
+});
