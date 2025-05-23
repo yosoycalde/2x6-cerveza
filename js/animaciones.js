@@ -676,7 +676,8 @@ document.addEventListener('keydown', function(e) {
     '1': '#inicio',
     '2': '#tipos',
     '3': '#proceso',
-    '4': '#contacto'
+    '4': '#servicios',
+    '5': '#contacto'
   };
   
   if (e.altKey && keyMap[e.key]) {
