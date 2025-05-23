@@ -10,11 +10,18 @@
   --color-background: #fff8e1; /* Fondo suave color crema/cerveza clara */
 }
 
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+  text-align: center;
+  
+}
+.TamañoSabores{
+  font-size: 36px;
+
 }
 
 body {
