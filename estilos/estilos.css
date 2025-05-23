@@ -550,3 +550,48 @@ body {
   gap: 20px;
   margin-top: 30px;
 }
+
+#TamañoSabores {
+    font-size: 35.2px; 
+}
+#servicios h2 {
+    font-size: 35.2px; /* O el tamaño que desees */
+}
+/* Estilos para el título "Conoce Nuestros Servicios" y su línea */
+.titulo-servicios-con-linea {
+    position: relative; 
+    display: inline-block; 
+    margin-bottom: 15px; 
+}
+
+.titulo-servicios-con-linea::after {
+    content: ''; 
+    display: block; 
+    width: 80px; 
+    height: 4px;
+    background-color: orange; 
+    margin: 8px auto 0 auto; 
+}
+
+/* Estilos para el título "Sabores" y la línea decorativa */
+.titulo-sabores-con-linea {
+    position: relative;
+    display: inline-block; 
+    margin-bottom: 15px; 
+}
+.titulo-sabores-con-linea::after {
+    content: ''; 
+    display: block; 
+    width: 60px;
+    height: 3px;
+    background-color: orange; 
+    margin: 8px auto 0 auto; 
+}
+.logo-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; 
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 30px;
+  color: #FFD700; 
+}
