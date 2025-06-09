@@ -671,7 +671,7 @@ function setupActiveSection() {
 
 // Función adicional para navegación con teclado (accesibilidad)
 document.addEventListener('keydown', function(e) {
-  // Navegación con teclas numéricas (1-4)
+  // Navegación con teclas numéricas (1-5)
   const keyMap = {
     '1': '#inicio',
     '2': '#tipos',
