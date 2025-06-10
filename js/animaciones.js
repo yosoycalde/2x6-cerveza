@@ -714,3 +714,31 @@ window.addEventListener('popstate', function(e) {
 });
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.querySelector('.carousel');
+  const slides = document.querySelectorAll('.slide');
+  const prevBtn = document.querySelector('.prev');
+  const nextBtn = document.querySelector('.next');
+
+  let index = 0;
+
+  function showSlide(i) {
+    const slideWidth = slides[0].offsetWidth + 20; // 20px de gap
+    carousel.style.transform = `translateX(${-slideWidth * i}px)`;
+  }
+
+  function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  }
+
+  function prevSlide() {
+    index = (index - 1 + slides.length) % slides.length;
+    showSlide(index);
+  }
+
+  nextBtn.addEventListener('click', nextSlide);
+  prevBtn.addEventListener('click', prevSlide);
+
+  setInterval(nextSlide, 4000); // Cambio automático
+});
