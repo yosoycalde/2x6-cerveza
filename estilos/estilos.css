@@ -651,10 +651,13 @@ button.next {
 
 button.prev {
   left: 0px;
+  padding: 8px 10px 10px 10px;
+  
 }
 
 button.next {
   right: 0px;
+  padding: 8px 10px 10px 10px;
 }
 
 button:hover {
