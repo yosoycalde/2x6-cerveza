@@ -416,9 +416,27 @@ footer {
 }
 
 .social-media {
+  text-align: center;
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+}
 
+.icons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.social-icon img {
+  width: 35px;
+  height: 35px;
+}
+
+.follow-text {
+  font-weight: bold;
+  font-size: 16px;
+  color: #ffffff;
 }
 
 .social-icon {
