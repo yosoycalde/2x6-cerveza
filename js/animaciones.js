@@ -768,33 +768,36 @@ overlay.addEventListener('click', () => {
 });
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  const menuBtn = document.getElementById("menu-btn");
-  const closeBtn = document.getElementById("close-btn");
-  const aviancaMenu = document.getElementById("avianca-menu");
-  const overlay = document.getElementById("overlay");
+// Funcionalidad del menú hamburguesa
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
 
-  // Verifica que todos los elementos existen
-  if (!menuBtn || !closeBtn || !aviancaMenu || !overlay) {
-    console.error("Elementos del menú no encontrados en el DOM.");
-    return;
-  }
+// Toggle del menú al hacer clic en la hamburguesa
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
 
-  // ABRIR menú
-  menuBtn.addEventListener("click", () => {
-    aviancaMenu.style.right = "0";
-    overlay.style.display = "block";
-  });
+// Cerrar menú al hacer clic en un enlace (útil en móvil)
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
 
-  // CERRAR menú al hacer clic en la 'X'
-  closeBtn.addEventListener("click", () => {
-    aviancaMenu.style.right = "-250px";
-    overlay.style.display = "none";
-  });
+// Cerrar menú al hacer clic fuera de él
+document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
+});
 
-  // CERRAR menú al hacer clic en el fondo oscuro
-  overlay.addEventListener("click", () => {
-    aviancaMenu.style.right = "-250px";
-    overlay.style.display = "none";
-  });
+// Cerrar menú automáticamente al cambiar el tamaño de ventana
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    }
 });
