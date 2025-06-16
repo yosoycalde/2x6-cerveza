@@ -747,7 +747,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(nextSlide, 4000); // Cambio automático
 });
 
-
 const menuBtn = document.getElementById('menu-btn');
 const closeBtn = document.getElementById('close-btn');
 const menu = document.getElementById('avianca-menu');
@@ -767,3 +766,5 @@ overlay.addEventListener('click', () => {
   menu.classList.remove('open');
   overlay.classList.remove('show');
 });
+
+
