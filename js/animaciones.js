@@ -768,3 +768,33 @@ overlay.addEventListener('click', () => {
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  const menuBtn = document.getElementById("menu-btn");
+  const closeBtn = document.getElementById("close-btn");
+  const aviancaMenu = document.getElementById("avianca-menu");
+  const overlay = document.getElementById("overlay");
+
+  // Verifica que todos los elementos existen
+  if (!menuBtn || !closeBtn || !aviancaMenu || !overlay) {
+    console.error("Elementos del menú no encontrados en el DOM.");
+    return;
+  }
+
+  // ABRIR menú
+  menuBtn.addEventListener("click", () => {
+    aviancaMenu.style.right = "0";
+    overlay.style.display = "block";
+  });
+
+  // CERRAR menú al hacer clic en la 'X'
+  closeBtn.addEventListener("click", () => {
+    aviancaMenu.style.right = "-250px";
+    overlay.style.display = "none";
+  });
+
+  // CERRAR menú al hacer clic en el fondo oscuro
+  overlay.addEventListener("click", () => {
+    aviancaMenu.style.right = "-250px";
+    overlay.style.display = "none";
+  });
+});
