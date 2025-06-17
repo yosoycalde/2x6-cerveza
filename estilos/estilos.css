@@ -796,6 +796,7 @@ button:hover {
   padding: 5px;
   margin-bottom: 20px;
   border-radius: 10px;
+  width: 100%;
 }
 
 button {
