@@ -798,7 +798,7 @@ button:hover {
 }
 
 button {
-  margin-top: 10px;
+  margin-top: 15px;
   padding: 12px 12px;
   background-color: #28a745;
   color: white;
@@ -815,7 +815,7 @@ button:hover {
   flex: 1;
   background: #fff;
   border: 1px solid #ddd;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   max-height: 700px;
   overflow-y: auto;
