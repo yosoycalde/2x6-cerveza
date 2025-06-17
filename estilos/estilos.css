@@ -787,6 +787,7 @@ button:hover {
 
 .productos {
   flex: 5;
+  
 }
 
 .producto {
@@ -814,7 +815,7 @@ button:hover {
 }
 
 .carrito {
-  flex: 1;
+  flex: 1.5;
   margin-top: 73px;
   background: #fff;
   border: 1px solid #ddd;
