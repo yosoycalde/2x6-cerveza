@@ -786,7 +786,7 @@ button:hover {
 }
 
 .productos {
-  flex: 2;
+  flex: 3;
 }
 
 .producto {
@@ -799,7 +799,7 @@ button:hover {
 
 button {
   margin-top: 10px;
-  padding: 8px 12px;
+  padding: 12px 12px;
   background-color: #28a745;
   color: white;
   border: none;
@@ -844,3 +844,6 @@ button:hover {
 #finalizar:hover {
   background-color: #0056b3;
 }
+
+
+

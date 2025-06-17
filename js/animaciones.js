@@ -54,6 +54,8 @@ function createBeerBubbles() {
   }
 }
 
+
+
 // Crear una burbuja individual
 function createBubble(container) {
   const bubble = document.createElement("div");
@@ -107,6 +109,8 @@ function createBubble(container) {
     document.head.appendChild(style);
   }
 
+
+  
   // Añadir la burbuja al contenedor
   container.appendChild(bubble);
 }
