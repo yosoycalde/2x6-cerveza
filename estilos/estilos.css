@@ -386,12 +386,14 @@ nav {
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
+
 }
 
 .submit-button:hover {
   background-color: var(--color-amber);
   color: var(--color-dark);
 }
+
 
 /* Footer */
 footer {
@@ -777,4 +779,68 @@ button:hover {
   display: block;
 }
 
+.contenedor {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
 
+.productos {
+  flex: 2;
+}
+
+.producto {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.carrito {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+#lista-carrito {
+  list-style: none;
+  padding: 0;
+}
+
+#lista-carrito li {
+  border-bottom: 1px solid #eee;
+  padding: 5px 0;
+}
+
+#total {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#finalizar {
+  background-color: #007bff;
+  margin-top: 10px;
+}
+
+#finalizar:hover {
+  background-color: #0056b3;
+}
