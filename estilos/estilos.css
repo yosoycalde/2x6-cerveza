@@ -815,12 +815,12 @@ button:hover {
 
 .carrito {
   flex: 1;
-  margin-top: 71px;
+  margin-top: 73px;
   background: #fff;
   border: 1px solid #ddd;
   padding: 17px;
   border-radius: 10px;
-  max-height: 756px;
+  max-height: 755px;
   overflow-y: auto;
 }
 
