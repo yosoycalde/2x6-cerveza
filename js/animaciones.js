@@ -751,25 +751,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(nextSlide, 4000); // Cambio automático
 });
 
-const menuBtn = document.getElementById('menu-btn');
-const closeBtn = document.getElementById('close-btn');
-const menu = document.getElementById('avianca-menu');
-const overlay = document.getElementById('overlay');
 
-menuBtn.addEventListener('click', () => {
-  menu.classList.add('open');
-  overlay.classList.add('show');
-});
-
-closeBtn.addEventListener('click', () => {
-  menu.classList.remove('open');
-  overlay.classList.remove('show');
-});
-
-overlay.addEventListener('click', () => {
-  menu.classList.remove('open');
-  overlay.classList.remove('show');
-});
 
 
 let carrito = [];

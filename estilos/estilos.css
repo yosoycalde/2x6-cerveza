@@ -798,7 +798,7 @@ button:hover {
 }
 
 button {
-  margin-top: 15px;
+  margin-top: 30px;
   padding: 12px 12px;
   background-color: #28a745;
   color: white;
@@ -809,13 +809,16 @@ button {
 
 button:hover {
   background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .carrito {
   flex: 1;
+  margin-top: 40px;
   background: #fff;
   border: 1px solid #ddd;
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
   max-height: 700px;
   overflow-y: auto;
