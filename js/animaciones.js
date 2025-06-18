@@ -802,3 +802,4 @@ function finalizarCompra() {
   total = 0;
   actualizarCarrito();
 }
+alert('¡Bienvenido a nuestra tienda de cerveza! Aquí encontrarás las mejores cervezas artesanales. Explora nuestros productos y disfruta de una experiencia única.');
