@@ -311,25 +311,46 @@
 
       <div class="producto">
         <br>
-        <h2>Pack x6 Cervezas</h2>
+        <h2>Vasos</h2>
         <br>
-        <p><b>$55.000</b></p>
-        <button onclick="agregarAlCarrito('Pack x6 Cervezas', 55000)">Agregar al carrito</button>
+        <p><b>$15.000</b></p>
+        <button onclick="agregarAlCarrito('Vasoss', 15000)">Agregar al carrito</button>
       </div>
     </div>
 
+<!-- Botón flotante del carrito -->
+<div class="carrito" onclick="toggleCarrito()">
+  🛒 Carrito
+</div>
 
-    <div class="carrito">
-      <h2>🛒 Carrito</h2>
-      <br>
-      <ul id="lista-carrito"></ul>
-      <p id="total">Total: $0</p>
-      <button id="finalizar" onclick="finalizarCompra()">Finalizar compra</button>
-    </div>
-  </div>
+<!-- Ventana emergente del carrito -->
+<div class="carrito-popup" id="carritoPopup">
+  <h2>🛒 Carrito</h2>
+  <ul id="lista-carrito"></ul>
+  <p id="total">Total: $0</p>
+  <button id="finalizar" onclick="finalizarCompra()">Finalizar compra</button>
+</div>
+
+<!-- Botón flotante del carrito -->
+<div class="carrito" onclick="toggleCarrito()">
+  🛒 Carrito <span id="contador-carrito">0</span>
+</div>
+
+<!-- Ventana emergente del carrito -->
+<div class="carrito-popup" id="carritoPopup">
+  <h2>🛒 Carrito</h2>
+  <ul id="lista-carrito"></ul>
+  <p id="total">Total: $0</p>
+  <button onclick="finalizarCompra()">Finalizar compra</button>
+</div>s
+
+<!--botón para agregar un servicio -->
+<button onclick="agregarAlCarrito('Servicio Técnico', 15000)">Agregar Servicio Técnico</button>
+<button onclick="agregarAlCarrito('Mantenimiento', 12000)">Agregar Mantenimiento</button>
 <br>
 <br>
-
+<br>
+<br>
 
     <div>
         <h2 class="titulo-sabores-con-linea" style="text-align: center;">Partocinio</h2>

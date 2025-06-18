@@ -804,3 +804,37 @@ function finalizarCompra() {
   actualizarCarrito();
 }
 alert('¡Bienvenido a nuestra tienda de cerveza! Aquí encontrarás las mejores cervezas artesanales. Explora nuestros productos y disfruta de una experiencia única.');
+
+
+
+document.querySelector('.carrito').addEventListener('click', () => {
+  const elementos = document.querySelectorAll('.carrito ul, .carrito p, .carrito button');
+  elementos.forEach(el => {
+    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+  });
+});
+
+
+
+function toggleCarrito() {
+    const popup = document.getElementById('carritoPopup');
+    popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+  }
+
+  function finalizarCompra() {
+    // Mostrar mensaje de confirmación
+    alert('¡Compra finalizada!');
+
+    // Vaciar la lista del carrito
+    const lista = document.getElementById('lista-carrito');
+    lista.innerHTML = '';
+
+    // Reiniciar el total
+    document.getElementById('total').textContent = 'Total: $0';
+
+    // Opcional: cerrar el popup del carrito
+    document.getElementById('carritoPopup').style.display = 'none';
+  }
+
+    cantidadCarrito++;
+      document.getElementById("contador-carrito").textContent = cantidadCarrito;
