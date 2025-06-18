@@ -15,10 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Funcionalidad para mostrar/ocultar detalles de servicios
   setupServicesToggle();
 
-
-
-
-  
   // Animación para el botón CTA
   const ctaButton = document.querySelector(".cta-button");
   if (ctaButton) {
@@ -53,8 +49,6 @@ function createBeerBubbles() {
     createBubble(beerAnimation);
   }
 }
-
-
 
 // Crear una burbuja individual
 function createBubble(container) {
@@ -109,8 +103,6 @@ function createBubble(container) {
     document.head.appendChild(style);
   }
 
-
-  
   // Añadir la burbuja al contenedor
   container.appendChild(bubble);
 }
@@ -283,15 +275,15 @@ function setupServicesToggle() {
 
   // Agregar event listener a cada servicio
   servicios.forEach((servicio) => {
-    servicio.addEventListener("click", function(e) {
+    servicio.addEventListener("click", function (e) {
       // Prevenir que el click se propague si hay enlaces dentro
-      if (e.target.tagName === 'A') return;
-      
+      if (e.target.tagName === "A") return;
+
       const detalles = this.querySelector(".detalles");
-      
+
       if (detalles) {
         const estaVisible = detalles.classList.contains("visible");
-        
+
         // Cerrar todos los otros detalles primero
         servicios.forEach((otroServicio) => {
           const otrosDetalles = otroServicio.querySelector(".detalles");
@@ -300,7 +292,7 @@ function setupServicesToggle() {
             otroServicio.classList.remove("active");
           }
         });
-        
+
         // Toggle del servicio clickeado
         if (estaVisible) {
           detalles.classList.remove("visible");
@@ -429,43 +421,42 @@ function setupFormValidation() {
   });
 }
 
-
 // Navegación suave para los botones del menú
 document.addEventListener("DOMContentLoaded", function () {
   // Configurar navegación suave
   setupSmoothNavigation();
-  
+
   // Configurar efectos visuales para los botones
   setupNavigationEffects();
-  
+
   // Configurar indicador de sección activa
   setupActiveSection();
 });
-
 
 // Función principal para configurar la navegación suave
 function setupSmoothNavigation() {
   // Seleccionar todos los enlaces del menú de navegación
   const navLinks = document.querySelectorAll('.menu a[href^="#"]');
-  
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
       e.preventDefault(); // Prevenir comportamiento por defecto
-      
-      const targetId = this.getAttribute('href');
+
+      const targetId = this.getAttribute("href");
       const targetSection = document.querySelector(targetId);
-      
+
       if (targetSection) {
         // Configuración de scroll suave personalizada
-        const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+        const headerHeight =
+          document.querySelector("header")?.offsetHeight || 0;
         const targetPosition = targetSection.offsetTop - headerHeight - 20;
-        
+
         // Scroll suave personalizado con mejor control
         smoothScrollTo(targetPosition, 1000); // 1000ms = 1 segundo
-        
+
         // Actualizar URL sin hacer scroll brusco
         history.pushState(null, null, targetId);
-        
+
         // Agregar clase activa al enlace clickeado
         updateActiveNavLink(this);
       }
@@ -478,40 +469,38 @@ function smoothScrollTo(targetPosition, duration) {
   const startPosition = window.pageYOffset;
   const distance = targetPosition - startPosition;
   let startTime = null;
-  
+
   // Función de easing para una transición más natural
   function easeInOutCubic(t) {
-    return t < 0.5 
-      ? 4 * t * t * t 
-      : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
   }
-  
+
   function animation(currentTime) {
     if (startTime === null) startTime = currentTime;
     const timeElapsed = currentTime - startTime;
     const progress = Math.min(timeElapsed / duration, 1);
-    
+
     const easedProgress = easeInOutCubic(progress);
-    const currentPosition = startPosition + (distance * easedProgress);
-    
+    const currentPosition = startPosition + distance * easedProgress;
+
     window.scrollTo(0, currentPosition);
-    
+
     if (progress < 1) {
       requestAnimationFrame(animation);
     }
   }
-  
+
   requestAnimationFrame(animation);
 }
 
 // Función para agregar efectos visuales a los botones de navegación
 function setupNavigationEffects() {
-  const navLinks = document.querySelectorAll('.menu a');
-  
+  const navLinks = document.querySelectorAll(".menu a");
+
   // Agregar estilos CSS para los efectos
-  if (!document.querySelector('#navigationStyles')) {
-    const style = document.createElement('style');
-    style.id = 'navigationStyles';
+  if (!document.querySelector("#navigationStyles")) {
+    const style = document.createElement("style");
+    style.id = "navigationStyles";
     style.textContent = `
       .menu a {
         position: relative;
@@ -592,26 +581,26 @@ function setupNavigationEffects() {
     `;
     document.head.appendChild(style);
   }
-  
+
   // Agregar efecto de ondas (ripple) al hacer clic
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
       // Crear elemento de onda
-      const ripple = document.createElement('span');
-      ripple.classList.add('ripple');
-      
+      const ripple = document.createElement("span");
+      ripple.classList.add("ripple");
+
       // Calcular posición y tamaño
       const rect = this.getBoundingClientRect();
       const size = Math.max(rect.width, rect.height);
       const x = e.clientX - rect.left - size / 2;
       const y = e.clientY - rect.top - size / 2;
-      
-      ripple.style.width = ripple.style.height = size + 'px';
-      ripple.style.left = x + 'px';
-      ripple.style.top = y + 'px';
-      
+
+      ripple.style.width = ripple.style.height = size + "px";
+      ripple.style.left = x + "px";
+      ripple.style.top = y + "px";
+
       this.appendChild(ripple);
-      
+
       // Remover el elemento después de la animación
       setTimeout(() => {
         if (this.contains(ripple)) {
@@ -619,15 +608,15 @@ function setupNavigationEffects() {
         }
       }, 600);
     });
-    
+
     // Efectos adicionales en hover
-    link.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-2px) scale(1.05)';
+    link.addEventListener("mouseenter", function () {
+      this.style.transform = "translateY(-2px) scale(1.05)";
     });
-    
-    link.addEventListener('mouseleave', function() {
-      if (!this.classList.contains('active')) {
-        this.style.transform = 'translateY(0) scale(1)';
+
+    link.addEventListener("mouseleave", function () {
+      if (!this.classList.contains("active")) {
+        this.style.transform = "translateY(0) scale(1)";
       }
     });
   });
@@ -636,68 +625,72 @@ function setupNavigationEffects() {
 // Función para actualizar el enlace activo
 function updateActiveNavLink(activeLink) {
   // Remover clase activa de todos los enlaces
-  document.querySelectorAll('.menu a').forEach(link => {
-    link.classList.remove('active');
-    link.style.transform = 'translateY(0) scale(1)';
+  document.querySelectorAll(".menu a").forEach((link) => {
+    link.classList.remove("active");
+    link.style.transform = "translateY(0) scale(1)";
   });
-  
+
   // Agregar clase activa al enlace actual
-  activeLink.classList.add('active');
-  activeLink.style.transform = 'translateY(-2px) scale(1.05)';
+  activeLink.classList.add("active");
+  activeLink.style.transform = "translateY(-2px) scale(1.05)";
 }
 
 // Función para detectar la sección visible y actualizar el menú automáticamente
 function setupActiveSection() {
-  const sections = document.querySelectorAll('section[id]');
+  const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll('.menu a[href^="#"]');
-  
+
   // Configurar Intersection Observer
   const observerOptions = {
     root: null,
-    rootMargin: '-20% 0px -70% 0px', // Detectar cuando la sección está en el 20%-70% del viewport
-    threshold: 0.1
+    rootMargin: "-20% 0px -70% 0px", // Detectar cuando la sección está en el 20%-70% del viewport
+    threshold: 0.1,
   };
-  
+
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const sectionId = '#' + entry.target.id;
-        const correspondingLink = document.querySelector(`.menu a[href="${sectionId}"]`);
-        
+        const sectionId = "#" + entry.target.id;
+        const correspondingLink = document.querySelector(
+          `.menu a[href="${sectionId}"]`
+        );
+
         if (correspondingLink) {
           updateActiveNavLink(correspondingLink);
         }
       }
     });
   }, observerOptions);
-  
+
   // Observar todas las secciones
-  sections.forEach(section => {
+  sections.forEach((section) => {
     observer.observe(section);
   });
 }
 
 // Función adicional para navegación con teclado (accesibilidad)
-document.addEventListener('keydown', function(e) {
+document.addEventListener("keydown", function (e) {
   // Navegación con teclas numéricas (1-5)
   const keyMap = {
-    '1': '#inicio',
-    '2': '#tipos',
-    '3': '#proceso',
-    '4': '#servicios',
-    '5': '#contacto',
-    '6': '#carrito'
+    1: "#inicio",
+    2: "#tipos",
+    3: "#proceso",
+    4: "#servicios",
+    5: "#contacto",
+    6: "#carrito",
   };
-  
+
   if (e.altKey && keyMap[e.key]) {
     e.preventDefault();
     const targetSection = document.querySelector(keyMap[e.key]);
-    const correspondingLink = document.querySelector(`.menu a[href="${keyMap[e.key]}"]`);
-    
+    const correspondingLink = document.querySelector(
+      `.menu a[href="${keyMap[e.key]}"]`
+    );
+
     if (targetSection && correspondingLink) {
-      const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+      const headerHeight = document.querySelector("header")?.offsetHeight || 0;
       const targetPosition = targetSection.offsetTop - headerHeight - 20;
-      
+
       smoothScrollTo(targetPosition, 800);
       updateActiveNavLink(correspondingLink);
       history.pushState(null, null, keyMap[e.key]);
@@ -706,28 +699,27 @@ document.addEventListener('keydown', function(e) {
 });
 
 // Función para manejar navegación hacia atrás/adelante del navegador
-window.addEventListener('popstate', function(e) {
+window.addEventListener("popstate", function (e) {
   const hash = window.location.hash;
   if (hash) {
     const targetSection = document.querySelector(hash);
     const correspondingLink = document.querySelector(`.menu a[href="${hash}"]`);
-    
+
     if (targetSection && correspondingLink) {
-      const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+      const headerHeight = document.querySelector("header")?.offsetHeight || 0;
       const targetPosition = targetSection.offsetTop - headerHeight - 20;
-      
+
       smoothScrollTo(targetPosition, 800);
       updateActiveNavLink(correspondingLink);
     }
   }
 });
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  const carousel = document.querySelector('.carousel');
-  const slides = document.querySelectorAll('.slide');
-  const prevBtn = document.querySelector('.prev');
-  const nextBtn = document.querySelector('.next');
+document.addEventListener("DOMContentLoaded", () => {
+  const carousel = document.querySelector(".carousel");
+  const slides = document.querySelectorAll(".slide");
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
 
   let index = 0;
 
@@ -746,21 +738,18 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(index);
   }
 
-  nextBtn.addEventListener('click', nextSlide);
-  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener("click", nextSlide);
+  prevBtn.addEventListener("click", prevSlide);
 
   setInterval(nextSlide, 4000); // Cambio automático
 });
-
-
-
 
 let carrito = [];
 let total = 0;
 
 function agregarAlCarrito(nombre, precio) {
   // Verifica si ya existe en el carrito
-  const productoExistente = carrito.find(item => item.nombre === nombre); 
+  const productoExistente = carrito.find((item) => item.nombre === nombre);
 
   if (productoExistente) {
     productoExistente.cantidad++;
@@ -770,7 +759,7 @@ function agregarAlCarrito(nombre, precio) {
       nombre,
       precio,
       cantidad: 1,
-      subtotal: precio
+      subtotal: precio,
     });
   }
 
@@ -778,23 +767,27 @@ function agregarAlCarrito(nombre, precio) {
 }
 
 function actualizarCarrito() {
-  const lista = document.getElementById('lista-carrito');
-  lista.innerHTML = '';
+  const lista = document.getElementById("lista-carrito");
+  lista.innerHTML = "";
   total = 0;
 
   carrito.forEach((item) => {
-    const li = document.createElement('li');
-    li.textContent = `${item.nombre} x${item.cantidad} - $${item.subtotal.toLocaleString()}`;
+    const li = document.createElement("li");
+    li.textContent = `${item.nombre} x${
+      item.cantidad
+    } - $${item.subtotal.toLocaleString()}`;
     lista.appendChild(li);
     total += item.subtotal;
   });
 
-  document.getElementById('total').textContent = `Total: $${total.toLocaleString()}`;
+  document.getElementById(
+    "total"
+  ).textContent = `Total: $${total.toLocaleString()}`;
 }
 
 function finalizarCompra() {
   if (carrito.length === 0) {
-    alert('El carrito está vacío.');
+    alert("El carrito está vacío.");
     return;
   }
 
@@ -803,38 +796,35 @@ function finalizarCompra() {
   total = 0;
   actualizarCarrito();
 }
-alert('¡Bienvenido a nuestra tienda de cerveza! Aquí encontrarás las mejores cervezas artesanales. Explora nuestros productos y disfruta de una experiencia única.');
+alert(
+  "¡Bienvenido a nuestra tienda de cerveza! Aquí encontrarás las mejores cervezas artesanales. Explora nuestros productos y disfruta de una experiencia única."
+);
 
-
-
-document.querySelector('.carrito').addEventListener('click', () => {
-  const elementos = document.querySelectorAll('.carrito ul, .carrito p, .carrito button');
-  elementos.forEach(el => {
-    el.style.display = el.style.display === 'none' ? 'block' : 'none';
+document.querySelector(".carrito").addEventListener("click", () => {
+  const elementos = document.querySelectorAll(
+    ".carrito ul, .carrito p, .carrito button"
+  );
+  elementos.forEach((el) => {
+    el.style.display = el.style.display === "none" ? "block" : "none";
   });
 });
 
-
-
 function toggleCarrito() {
-    const popup = document.getElementById('carritoPopup');
-    popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
-  }
+  const popup = document.getElementById("carritoPopup");
+  popup.style.display = popup.style.display === "block" ? "none" : "block";
+}
 
-  function finalizarCompra() {
-    // Mostrar mensaje de confirmación
-    alert('¡Compra finalizada!');
+function finalizarCompra() {
+  // Mostrar mensaje de confirmación
+  alert("¡Compra finalizada!");
 
-    // Vaciar la lista del carrito
-    const lista = document.getElementById('lista-carrito');
-    lista.innerHTML = '';
+  // Vaciar la lista del carrito
+  const lista = document.getElementById("lista-carrito");
+  lista.innerHTML = "";
 
-    // Reiniciar el total
-    document.getElementById('total').textContent = 'Total: $0';
+  // Reiniciar el total
+  document.getElementById("total").textContent = "Total: $0";
 
-    // Opcional: cerrar el popup del carrito
-    document.getElementById('carritoPopup').style.display = 'none';
-  }
-
-    cantidadCarrito++;
-      document.getElementById("contador-carrito").textContent = cantidadCarrito;
+  // Opcional: cerrar el popup del carrito
+  document.getElementById("carritoPopup").style.display = "none";
+}
