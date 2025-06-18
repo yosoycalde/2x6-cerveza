@@ -677,7 +677,6 @@ document.addEventListener("keydown", function (e) {
     3: "#proceso",
     4: "#servicios",
     5: "#contacto",
-    6: "#carrito",
   };
 
   if (e.altKey && keyMap[e.key]) {
@@ -764,6 +763,9 @@ function agregarAlCarrito(nombre, precio) {
   }
 
   actualizarCarrito();
+  cantidadCarrito++; // Aumenta el contador
+actualizarContador(); // Actualiza el número rojo
+
 }
 
 function actualizarCarrito() {
@@ -828,3 +830,13 @@ function finalizarCompra() {
   // Opcional: cerrar el popup del carrito
   document.getElementById("carritoPopup").style.display = "none";
 }
+
+let cantidadCarrito = 0;
+
+function actualizarContador() {
+  const contador = document.getElementById("contador-carrito");
+  if (contador) {
+    contador.textContent = cantidadCarrito.toString();
+  }
+}
+
