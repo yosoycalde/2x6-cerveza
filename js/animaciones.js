@@ -840,3 +840,25 @@ function actualizarContador() {
   }
 }
 
+// Inicializar el contador al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+  actualizarContador();
+});
+
+// Agregar evento de clic al botón del carrito
+document.querySelector(".carrito").addEventListener("click", toggleCarrito); 
+// Agregar evento de clic al botón de finalizar compra
+document.querySelector(".finalizar-compra").addEventListener("click", finalizarCompra);
+// Agregar evento de clic a los botones de agregar al carrito
+document.querySelectorAll(".agregar-carrito").forEach((btn) => {
+  btn.addEventListener("click", function () {
+    const nombre = this.getAttribute("data-nombre");
+    const precio = parseFloat(this.getAttribute("data-precio"));
+    agregarAlCarrito(nombre, precio);
+  });
+});
+// Agregar evento de clic al botón de cerrar el popup del carrito
+document.querySelector(".cerrar-popup").addEventListener("click", () => {
+  document.getElementById("carritoPopup").style.display = "none";
+}); 
+  
