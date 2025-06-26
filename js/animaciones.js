@@ -840,5 +840,3 @@ function actualizarContador() {
   }
 }
 
-
-
