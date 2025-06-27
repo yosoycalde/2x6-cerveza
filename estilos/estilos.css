@@ -696,11 +696,6 @@ button:hover {
   margin: 8px auto 0 auto; 
   border-radius: 2px;
 }
-
-
-
-
-
 .menu-header {
   position: absolute;
   top: 10px;
@@ -740,8 +735,6 @@ button:hover {
   width: 100%;
   height: 200px;
   justify-content: center;
-  
-  
 }
 
 .producto {
@@ -807,7 +800,6 @@ button:hover {
   z-index: 999;
   display: none; /* Oculto por defecto */
 }
-
 
 #lista-carrito {
   list-style: none;
