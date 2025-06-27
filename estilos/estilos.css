@@ -286,7 +286,7 @@ nav {
   top: -30px;
   left: 50%;
   transform: translateX(-50%);
-  width: 40px;
+  width: 4px;
   height: 40px;
   background-color: var(--color-amber);
   color: var(--color-dark);
@@ -832,10 +832,6 @@ button:hover {
 #finalizar:hover {
   background-color: #0056b3;
 }
-
-
-
-
 .carrito {
   position: fixed;
   top: 20px;
@@ -848,9 +844,6 @@ button:hover {
   z-index: 1000;
   font-weight: bold;
 }
-
-
-
 #contador-carrito {
   background-color: red;
   color: white;
