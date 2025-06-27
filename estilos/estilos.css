@@ -656,7 +656,7 @@ button.prev,
 button.next {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(10%);
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
@@ -670,16 +670,16 @@ button.next {
   align-items: center;
   justify-content: center;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  padding: 0; /* importante para centrar el ícono */
+  padding: 50; /* importante para centrar el ícono */
   line-height: 1; /* evita desajustes verticales */
 }
 
 button.prev {
-  left: 10px;
+  left: 0px;
 }
 
 button.next {
-  right: 10px;
+  right: 0px;
 }
 
 button:hover {
