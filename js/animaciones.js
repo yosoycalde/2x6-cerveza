@@ -840,4 +840,3 @@ function actualizarContador() {
     contador.textContent = cantidadCarrito.toString();
   }
 }
-
